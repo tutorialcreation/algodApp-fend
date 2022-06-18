@@ -15,6 +15,8 @@ import RequestAsset from "../notes/RequestAsset";
 import OptIn from "../notes/OptIn";
 import AcceptRequest from "../notes/AcceptRequest";
 import GetAssetParams from "../notes/GetAssetParams";
+import GetAssetHoldings from "../notes/GetAssetHoldings";
+import GetBalances from "../notes/GetBalances";
 
 class Dashboard extends Component {
   onLogout = () => {
@@ -45,6 +47,8 @@ class Dashboard extends Component {
           <OptIn/>
           <AcceptRequest/>
           <GetAssetParams/>
+          <GetAssetHoldings/>
+          <GetBalances/>
         </Container>
       </div>
     );
