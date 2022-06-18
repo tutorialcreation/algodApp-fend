@@ -8,6 +8,12 @@ import { logout } from "../login/LoginActions";
 
 import NotesList from "../notes/NotesList";
 import AddNote from "../notes/AddNote";
+import AddAsset from "../notes/AddAsset";
+import AddApplication from "../notes/AddApplication";
+import DonateAsset from "../notes/DonateAsset";
+import RequestAsset from "../notes/RequestAsset";
+import OptIn from "../notes/OptIn";
+import AcceptRequest from "../notes/AcceptRequest";
 
 class Dashboard extends Component {
   onLogout = () => {
@@ -31,6 +37,12 @@ class Dashboard extends Component {
         <Container>
           <NotesList />
           <AddNote />
+          <AddAsset/>
+          <AddApplication/>
+          <DonateAsset/>
+          <RequestAsset/>
+          <OptIn/>
+          <AcceptRequest/>
         </Container>
       </div>
     );

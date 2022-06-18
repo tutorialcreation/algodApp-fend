@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button} from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
 import { addNote } from "./NotesActions";
 
-class AddNote extends Component {
+class RequestAsset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      clientAddress:"",
-      clientSk:"",
+      bidder:"",
+      bidAmount:0,
+      appId:0
       
     };
 
@@ -43,29 +43,43 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
-        
+        <h2>Request Asset</h2>
+        <Form>
+          <Form.Group controlId="contentId">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              name="bidder"
+              value={this.bidder}
+              placeholder="Enter your address"
+            />
+            <Form.Label>Amount</Form.Label>
+            <Form.Control
+              name="bidAmount"
+              value={this.bidAmount}
+              placeholder="Enter amount of algos"
+            />
+            <Form.Label>Application Id</Form.Label>
+            <Form.Control
+              name="appId"
+              value={this.appId}
+              placeholder="Enter Application Id"
+            />
+          </Form.Group>
+
+        </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Generate
+          Request Asset
         </Button>
-        <hr/>
-        { this.state.clientAddress ? (
-          <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
-          </div>
-        ) : (
-          <p>Not yet generated client details</p>
-        )}
+       
       </div>
     );
   }
 }
 
-AddNote.propTypes = {
+RequestAsset.propTypes = {
   addNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddNote));
+export default connect(mapStateToProps, { addNote })(withRouter(RequestAsset));

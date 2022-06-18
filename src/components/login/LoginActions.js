@@ -6,9 +6,9 @@ import { setAxiosAuthToken, toastOnError } from "../../utils/Utils";
 
 export const login = (userData, redirectTo) => dispatch => {
   axios
-    .post("/api/v1/token/login/", userData)
+    .post("/api/v1/token/", userData)
     .then(response => {
-      const { auth_token } = response.data;
+      const auth_token  = response.data.access;
       setAxiosAuthToken(auth_token);
       dispatch(setToken(auth_token));
       dispatch(getCurrentUser(redirectTo));
@@ -89,3 +89,4 @@ export const logout = () => dispatch => {
       toastOnError(error);
     });
 };
+

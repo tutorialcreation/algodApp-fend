@@ -5,13 +5,12 @@ import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
 import { addNote } from "./NotesActions";
 
-class AddNote extends Component {
+class GetAssetParams extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      clientAddress:"",
-      clientSk:"",
+      address:"",
+      nft_id:0
       
     };
 
@@ -43,10 +42,9 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
         
         <Button variant="success" onClick={this.onAddClick}>
-          Generate
+          View Asset Status
         </Button>
         <hr/>
         { this.state.clientAddress ? (
@@ -62,10 +60,10 @@ class AddNote extends Component {
   }
 }
 
-AddNote.propTypes = {
+GetAssetParams.propTypes = {
   addNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddNote));
+export default connect(mapStateToProps, { addNote })(withRouter(GetAssetParams));

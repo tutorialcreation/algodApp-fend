@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button} from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
 import { addNote } from "./NotesActions";
 
-class AddNote extends Component {
+class DonateAsset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      clientAddress:"",
-      clientSk:"",
+      nft_id:0,
+      app_id:0,
+      nft_amount:0,
+      funder:"",
+      nft_holder:""
       
     };
 
@@ -43,10 +45,32 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
-        
+        <h2>Donate Asset</h2>
+        <Form>
+          <Form.Group controlId="contentId">
+            <Form.Label>Nft Amount</Form.Label>
+            <Form.Control
+              name="nft_amount"
+              value={this.nft_amount}
+              placeholder="Enter the amount of algos to donate"
+            />
+            <Form.Label>From</Form.Label>
+            <Form.Control
+              name="funder"
+              value={this.funder}
+              placeholder="Enter your address"
+            />
+            <Form.Label>To</Form.Label>
+            <Form.Control
+              name="nft_holder"
+              value={this.nft_holder}
+              placeholder="Enter recipients address"
+            />
+            
+          </Form.Group>
+        </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Generate
+          Donate
         </Button>
         <hr/>
         { this.state.clientAddress ? (
@@ -62,10 +86,10 @@ class AddNote extends Component {
   }
 }
 
-AddNote.propTypes = {
+DonateAsset.propTypes = {
   addNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddNote));
+export default connect(mapStateToProps, { addNote })(withRouter(DonateAsset));

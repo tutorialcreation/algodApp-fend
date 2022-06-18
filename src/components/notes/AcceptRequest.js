@@ -5,13 +5,12 @@ import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
 import { addNote } from "./NotesActions";
 
-class AddNote extends Component {
+class AcceptRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      clientAddress:"",
-      clientSk:"",
+      app_id:0,
+      nft_id:0
       
     };
 
@@ -43,10 +42,9 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
         
         <Button variant="success" onClick={this.onAddClick}>
-          Generate
+          Accept Request
         </Button>
         <hr/>
         { this.state.clientAddress ? (
@@ -62,10 +60,10 @@ class AddNote extends Component {
   }
 }
 
-AddNote.propTypes = {
+AcceptRequest.propTypes = {
   addNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddNote));
+export default connect(mapStateToProps, { addNote })(withRouter(AcceptRequest));

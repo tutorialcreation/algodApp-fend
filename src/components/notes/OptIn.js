@@ -5,13 +5,12 @@ import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
 import { addNote } from "./NotesActions";
 
-class AddNote extends Component {
+class OptIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
-      clientAddress:"",
-      clientSk:"",
+      bidder:"",
+      nft_id:0
       
     };
 
@@ -43,29 +42,19 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
         
         <Button variant="success" onClick={this.onAddClick}>
-          Generate
+          OptIn
         </Button>
-        <hr/>
-        { this.state.clientAddress ? (
-          <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
-          </div>
-        ) : (
-          <p>Not yet generated client details</p>
-        )}
       </div>
     );
   }
 }
 
-AddNote.propTypes = {
+OptIn.propTypes = {
   addNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddNote));
+export default connect(mapStateToProps, { addNote })(withRouter(OptIn));

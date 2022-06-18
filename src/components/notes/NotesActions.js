@@ -1,11 +1,12 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { toastOnError } from "../../utils/Utils";
 import { GET_NOTES, ADD_NOTE, DELETE_NOTE, UPDATE_NOTE } from "./NotesTypes";
 
 export const getNotes = () => dispatch => {
   axios
-    .get("/api/v1/notes/")
-    .then(response => {
+  .get("/api/v1/notes/")
+  .then(response => {
       dispatch({
         type: GET_NOTES,
         payload: response.data
@@ -14,16 +15,22 @@ export const getNotes = () => dispatch => {
     .catch(error => {
       toastOnError(error);
     });
-};
-
-export const addNote = note => dispatch => {
+  };
+  
+  export const addNote = note => dispatch => {
+    
+ 
   axios
-    .post("/api/v1/notes/", note)
+    .post("/api/v1/getClient/", note)
     .then(response => {
       dispatch({
         type: ADD_NOTE,
         payload: response.data
       });
+      localStorage.setItem("nftPk",response.data.pk)
+      localStorage.setItem("clientAddress",response.data.address)
+      localStorage.setItem("clientSk",response.data.sk)
+      toast.success("successfully generated client details")
     })
     .catch(error => {
       toastOnError(error);
