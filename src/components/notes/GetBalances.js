@@ -10,8 +10,6 @@ class GetBalances extends Component {
     super(props);
     this.state = {
       address:"",
-      nft_id:0
-      
     };
 
   }
@@ -44,7 +42,7 @@ class GetBalances extends Component {
       <div>
         
         <Button variant="success" onClick={this.onAddClick}>
-          View Asset Holdings
+          View Balance
         </Button>
         <hr/>
         { this.state.clientAddress ? (
