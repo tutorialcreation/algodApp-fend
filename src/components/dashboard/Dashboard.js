@@ -17,8 +17,12 @@ import AcceptRequest from "../notes/AcceptRequest";
 import GetAssetParams from "../notes/GetAssetParams";
 import GetAssetHoldings from "../notes/GetAssetHoldings";
 import GetBalances from "../notes/GetBalances";
+import WalletConnection from "../account/walletConnect";
 
 class Dashboard extends Component {
+  
+
+
   onLogout = () => {
     this.props.logout();
   };
@@ -30,6 +34,7 @@ class Dashboard extends Component {
         <Navbar bg="light">
           <Navbar.Brand href="/">Home</Navbar.Brand>
           <Navbar.Toggle />
+          {/* <WalletConnection/> */}
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
               User: <b>{user.username}</b>
