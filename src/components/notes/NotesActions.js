@@ -155,6 +155,64 @@ export const acceptRequest = note => dispatch => {
     });
 };
 
+export const getAssetHoldings = note => dispatch => {
+    
+ 
+  axios
+    .post("/api/v1/getAssetHoldingParams/", note)
+    .then(response => {
+      dispatch({
+        type: ADD_NOTE,
+        payload: response.data
+      });
+      localStorage.setItem("amount", response.data.amount)
+      localStorage.setItem("asset-id",response.data['asset-id'])
+      localStorage.setItem("is-frozen",response.data['is-frozen'])
+      toast.success("successfully retrieved assetholdings")
+    })
+    .catch(error => {
+      toastOnError(error);
+    });
+};
+
+export const getAssetParams = note => dispatch => {
+    
+ 
+  axios
+    .post("/api/v1/getAssetParams/", note)
+    .then(response => {
+      dispatch({
+        type: ADD_NOTE,
+        payload: response.data
+      });
+      localStorage.setItem("amount", response.data.amount)
+      localStorage.setItem("asset-id",response.data['asset-id'])
+      localStorage.setItem("is-frozen",response.data['is-frozen'])
+      toast.success("successfully retrieved asset status")
+    })
+    .catch(error => {
+      toastOnError(error);
+    });
+};
+
+export const getBalance = note => dispatch => {
+    
+ 
+  axios
+    .post("/api/v1/getBalances/", note)
+    .then(response => {
+      dispatch({
+        type: ADD_NOTE,
+        payload: response.data
+      });
+      localStorage.setItem("balance", response.data.amount)
+      toast.success("successfully retrieved account balance")
+    })
+    .catch(error => {
+      toastOnError(error);
+    });
+};
+
 export const deleteNote = id => dispatch => {
   axios
     .delete(`/api/v1/notes/${id}/`)

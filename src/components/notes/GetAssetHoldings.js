@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
+import { getAssetHoldings } from "./NotesActions";
 
 class GetAssetHoldings extends Component {
   constructor(props) {
@@ -19,14 +20,16 @@ class GetAssetHoldings extends Component {
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
+    const user = localStorage.getItem("clientAddress")
+    this.setState({address:user})
+    const nftId = localStorage.getItem("nftId")
+    this.setState({nft_id:nftId})
     const note = {
-      username: username
+      address:this.state.address,
+      nft_id:parseInt(this.state.nft_id)
     };
     
-    this.props.getA(note);
+    this.props.getAssetHoldings(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -60,9 +63,9 @@ class GetAssetHoldings extends Component {
 }
 
 GetAssetHoldings.propTypes = {
-  getA: PropTypes.func.isRequired
+  getAssetHoldings: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { getA })(withRouter(GetAssetHoldings));
+export default connect(mapStateToProps, { getAssetHoldings })(withRouter(GetAssetHoldings));
