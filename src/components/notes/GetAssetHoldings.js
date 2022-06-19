@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
-import { addNote } from "./NotesActions";
 
 class GetAssetHoldings extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ class GetAssetHoldings extends Component {
       username: username
     };
     
-    this.props.addNote(note);
+    this.props.getA(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -61,9 +60,9 @@ class GetAssetHoldings extends Component {
 }
 
 GetAssetHoldings.propTypes = {
-  addNote: PropTypes.func.isRequired
+  getA: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(GetAssetHoldings));
+export default connect(mapStateToProps, { getA })(withRouter(GetAssetHoldings));
