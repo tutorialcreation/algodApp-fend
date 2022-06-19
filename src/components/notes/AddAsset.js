@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { generateNft } from "./NotesActions";
 import { Web3Storage } from 'web3.storage/dist/bundle.esm.min.js'
 
 class AddAsset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "",
       asset_url:"",
       nft_pk:0,
       nft_amount:0,
@@ -40,6 +39,10 @@ class AddAsset extends Component {
   }
   storeWithProgress = (e) =>{
     const files = [e.target.files[0]]
+    // const client = makeStorageClient()
+    // const cid = await client.put(files)
+    // console.log('stored files with cid:', cid)
+    // return cid
     // show the root cid as soon as it's ready
     const onRootCidReady = cid => {
       console.log('uploading files with cid:', cid)
@@ -69,17 +72,31 @@ class AddAsset extends Component {
     
   }
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ 
+      [e.target.name]: e.target.value 
+    });
+    const nftPk = localStorage.getItem("nftPk")
+    this.setState({nft_pk:nftPk})
+    console.log(this.state.nft_pk)
+    console.log(this.state.nft_amount)
+    console.log(this.state.asset_url)
+    console.log(this.state.nft_amount)
+    console.log(this.state.unit_name)
+    console.log(this.state.asset_name)
+    console.log(this.state.note)
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
+    
     const note = {
-      username: username
+      asset_url:this.state.asset_url,
+      nft_pk:this.state.nft_pk,
+      nft_amount:this.state.nft_amount,
+      unit_name:this.state.unit_name,
+      asset_name:this.state.asset_name,
+      note:this.state.note
     };
-    this.props.addNote(note);
+    this.props.generateNft(note);
   };
 
   render() {
@@ -94,31 +111,40 @@ class AddAsset extends Component {
               name="nft_amount"
               value={this.nft_amount}
               placeholder="Enter nft amount"
-
+              onChange={this.onChange}
             />
             <Form.Label>Unit Name</Form.Label>
             <Form.Control
               name="unit_name"
               value={this.unit_name}
               placeholder="Enter unit name"
+              onChange={this.onChange}
             />
             <Form.Label>Asset Name</Form.Label>
             <Form.Control
               name="asset_name"
               value={this.asset_name}
               placeholder="Enter asset name"
-            />
-            <Form.Label>Asset</Form.Label>
-            <Form.File
-            onChange={this.storeWithProgress}
+              onChange={this.onChange}
             />
             <Form.Label>Note</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
-              name="content"
+              name="note"
               placeholder="Enter note"
               value={this.note}
+              onChange={this.onChange}
+            />
+            <Form.Label>Asset</Form.Label>
+            {/* <Form.File
+            onChange={this.storeWithProgress}
+            /> */}
+            <Form.Label>Asset Url</Form.Label>
+            <Form.Control
+              name="asset_url"
+              value={this.asset_url}
+              placeholder="Enter your web3 storage url"
               onChange={this.onChange}
             />
           </Form.Group>
@@ -132,9 +158,9 @@ class AddAsset extends Component {
 }
 
 AddAsset.propTypes = {
-  addNote: PropTypes.func.isRequired
+  generateNft: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddAsset));
+export default connect(mapStateToProps, { generateNft })(withRouter(AddAsset));
