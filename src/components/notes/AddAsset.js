@@ -152,6 +152,7 @@ class AddAsset extends Component {
         <Button variant="success" onClick={this.onAddClick}>
           Generate Nft
         </Button>
+        <hr></hr>
       </div>
     );
   }

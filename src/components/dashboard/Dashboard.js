@@ -28,7 +28,9 @@ class Dashboard extends Component {
   };
 
   render() {
+    
     const { user } = this.props.auth;
+    console.log(user)
     return (
       <div>
         <Navbar bg="light">
@@ -44,16 +46,35 @@ class Dashboard extends Component {
         </Navbar>
         <Container>
           <NotesList />
-          <AddNote />
-          <AddAsset/>
-          <AddApplication/>
-          <DonateAsset/>
-          <RequestAsset/>
-          <OptIn/>
-          <AcceptRequest/>
-          <GetAssetParams/>
-          <GetAssetHoldings/>
-          <GetBalances/>
+          {
+            (user.role === 1)
+            ?
+            <div>
+              <AddNote />
+              <AddAsset/>
+              <AcceptRequest/>
+              <GetAssetParams/>
+              <GetAssetHoldings/>
+              <GetBalances/>
+            </div>
+            :(user.role === 2)?
+            <div>
+              <RequestAsset/>
+              <OptIn/>
+              <GetAssetParams/>
+              <GetAssetHoldings/>
+              <GetBalances/>
+            </div>
+            :
+            <div>
+              <DonateAsset/>
+              <AddApplication/>
+              <GetAssetParams/>
+              <GetAssetHoldings/>
+              <GetBalances/>
+            </div>
+          }
+          
         </Container>
       </div>
     );

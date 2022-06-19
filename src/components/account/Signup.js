@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import axios from "axios";
-import { setAxiosAuthToken } from "../../utils/Utils";
+import { setAxiosAuthToken, toastOnError } from "../../utils/Utils";
 import {
   Alert,
   Container,
@@ -11,8 +11,9 @@ import {
   Row,
   Col,
   Form,
-  FormControl
+  FormControl,
 } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 class Signup extends Component {
   constructor(props) {
@@ -24,11 +25,13 @@ class Signup extends Component {
       usernameError: "",
       passwordError: "",
       emailError: "",
-      status: ""
+      status: "",
+      role:""
     };
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value })
   };
 
   onSignupClick = () => {
@@ -42,9 +45,10 @@ class Signup extends Component {
     const userData = {
       username: this.state.username,
       password: this.state.password,
+      role:parseInt(this.state.role),
       email: this.state.email
     };
-
+    console.log(userData)
     setAxiosAuthToken(""); // send request with empty token
     axios
       .post("/api/v1/users/", userData)
@@ -62,11 +66,14 @@ class Signup extends Component {
           if (error.response.data.hasOwnProperty("password")) {
             this.setState({ passwordError: error.response.data["password"] });
           }
+          
           if (error.response.data.hasOwnProperty("detail")) {
             this.setState({ status: "error" });
           }
+          toastOnError(error)
         } else {
           this.setState({ status: "error" });
+          toastOnError(error)
         }
       });
   };
@@ -135,7 +142,19 @@ class Signup extends Component {
               {this.state.passwordError}
             </Form.Control.Feedback>
           </Form.Group>
-        </Form>
+          <Form.Group>
+          <Form.Label>Role</Form.Label>
+          <Form.Control as="select"
+            name="role"
+            value={this.role}
+            onChange={this.onChange}
+          >
+            <option value="1">Staff</option>
+            <option value="2">Trainee</option>
+            <option value="3">Public</option>
+          </Form.Control>
+        </Form.Group>
+         </Form>
         <Button color="primary" onClick={this.onSignupClick}>
           Sign up
         </Button>
