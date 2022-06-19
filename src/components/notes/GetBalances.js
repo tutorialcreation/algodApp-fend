@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { getBalance } from "./NotesActions";
 
 class GetBalances extends Component {
   constructor(props) {
@@ -18,14 +18,14 @@ class GetBalances extends Component {
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
+    const user = localStorage.getItem("address")
+    this.setState({address:user})
+    
     const note = {
-      username: username
+      address: this.state.address
     };
     
-    this.props.addNote(note);
+    this.props.getBalance(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -59,9 +59,9 @@ class GetBalances extends Component {
 }
 
 GetBalances.propTypes = {
-  addNote: PropTypes.func.isRequired
+  getBalance: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(GetBalances));
+export default connect(mapStateToProps, { getBalance })(withRouter(GetBalances));

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { getAssetParams } from "./NotesActions";
 
 class GetAssetParams extends Component {
   constructor(props) {
@@ -20,14 +20,16 @@ class GetAssetParams extends Component {
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
+    const user = localStorage.getItem("clientAddress")
+    this.setState({address:user})
+    const nftId = localStorage.getItem("nftId")
+    this.setState({nft_id:nftId})
     const note = {
-      username: username
+      address:this.state.address,
+      nft_id:this.state.nft_id
     };
     
-    this.props.addNote(note);
+    this.props.getAssetParams(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -61,9 +63,9 @@ class GetAssetParams extends Component {
 }
 
 GetAssetParams.propTypes = {
-  addNote: PropTypes.func.isRequired
+  getAssetParams: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(GetAssetParams));
+export default connect(mapStateToProps, { getAssetParams })(withRouter(GetAssetParams));
