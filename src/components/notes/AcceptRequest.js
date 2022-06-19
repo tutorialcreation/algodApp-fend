@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { acceptRequest } from "./NotesActions";
 
 class AcceptRequest extends Component {
   constructor(props) {
@@ -23,11 +23,18 @@ class AcceptRequest extends Component {
     const user = localStorage.getItem("user")
     const username = JSON.parse(user).username;
     console.log(username)
+    const nftId = localStorage.getItem("nftId")
+    this.setState({nft_id:nftId})
+    console.log({"nftId":this.state.nft_id})
+    const appId = localStorage.getItem("appID")
+    this.setState({app_id:appId})
+    console.log({"appID":this.state.app_id})
     const note = {
-      username: username
+      app_id:parseInt(this.state.app_id),
+      nft_id:parseInt(this.state.nft_id)
     };
     
-    this.props.addNote(note);
+    this.props.acceptRequest(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -61,9 +68,9 @@ class AcceptRequest extends Component {
 }
 
 AcceptRequest.propTypes = {
-  addNote: PropTypes.func.isRequired
+  acceptRequest: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AcceptRequest));
+export default connect(mapStateToProps, { acceptRequest })(withRouter(AcceptRequest));
