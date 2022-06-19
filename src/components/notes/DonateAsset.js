@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { donateAsset } from "./NotesActions";
 
 class DonateAsset extends Component {
   constructor(props) {
@@ -24,6 +24,9 @@ class DonateAsset extends Component {
     const nftId = localStorage.getItem("nft_id")
     this.setState({nft_id:nftId})
     console.log({"nft_id":this.state.nft_id})
+    const appId = localStorage.getItem("appID")
+    this.setState({app_id:appId})
+    console.log({"appID":this.state.app_id})
 
   };
 
@@ -32,14 +35,14 @@ class DonateAsset extends Component {
     const username = JSON.parse(user).username;
     console.log(username)
     const note = {
-      nft_id:this.state.nft_id,
-      app_id:this.state.app_id,
-      nft_amount:this.state.nft_amount,
+      nft_id:parseInt(this.state.nft_id),
+      app_id:parseInt(this.state.app_id),
+      nft_amount:parseInt(this.state.nft_amount),
       funder:this.state.funder,
       nft_holder:this.state.nft_holder
     };
     
-    this.props.addNote(note);
+    this.props.donateAsset(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -62,18 +65,21 @@ class DonateAsset extends Component {
               name="nft_amount"
               value={this.nft_amount}
               placeholder="Enter the amount of algos to donate"
+              onChange={this.onChange}
             />
             <Form.Label>From</Form.Label>
             <Form.Control
               name="funder"
               value={this.funder}
               placeholder="Enter your address"
+              onChange={this.onChange}
             />
             <Form.Label>To</Form.Label>
             <Form.Control
               name="nft_holder"
               value={this.nft_holder}
               placeholder="Enter recipients address"
+              onChange={this.onChange}
             />
             
           </Form.Group>
@@ -96,9 +102,9 @@ class DonateAsset extends Component {
 }
 
 DonateAsset.propTypes = {
-  addNote: PropTypes.func.isRequired
+  donateAsset: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(DonateAsset));
+export default connect(mapStateToProps, { donateAsset })(withRouter(DonateAsset));
