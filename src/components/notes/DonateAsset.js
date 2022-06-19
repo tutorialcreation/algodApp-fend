@@ -20,6 +20,11 @@ class DonateAsset extends Component {
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value })
+    const nftId = localStorage.getItem("nft_id")
+    this.setState({nft_id:nftId})
+    console.log({"nft_id":this.state.nft_id})
+
   };
 
   onAddClick = () => {
@@ -27,7 +32,11 @@ class DonateAsset extends Component {
     const username = JSON.parse(user).username;
     console.log(username)
     const note = {
-      username: username
+      nft_id:this.state.nft_id,
+      app_id:this.state.app_id,
+      nft_amount:this.state.nft_amount,
+      funder:this.state.funder,
+      nft_holder:this.state.nft_holder
     };
     
     this.props.addNote(note);

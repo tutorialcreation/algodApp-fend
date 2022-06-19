@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { generateApp } from "./NotesActions";
 
 class AddApplication extends Component {
   constructor(props) {
@@ -22,24 +22,25 @@ class AddApplication extends Component {
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log({[e.target.name]: e.target.value})
+
+    const nftId = localStorage.getItem("nft_id")
+    this.setState({nft_id:nftId})
+    console.log({"nft_id":this.state.nft_id})
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
     const note = {
-      username: username
+      nft_id:parseInt(this.state.nft_id),
+      start_time:parseInt(this.state.start_time),
+      end_time:parseInt(this.state.end_time),
+      reserve:parseInt(this.state.reserve),
+      increment:parseInt(this.state.increment),
+      nft_amount:parseInt(this.state.nft_amount),
+      creator:this.state.creator
     };
     
-    this.props.addNote(note);
-    const clientAddress = localStorage.getItem("clientAddress")
-    const clientSk = localStorage.getItem("clientSk")
-    
-    this.setState({clientAddress:clientAddress})
-    this.setState({clientSk:clientSk})
-    console.log(this.state.clientAddress)
-    console.log(this.state.clientSk)
+    this.props.generateApp(note);
 
 
   };
@@ -56,36 +57,42 @@ class AddApplication extends Component {
               name="start_time"
               value={this.start_time}
               placeholder="Enter Starting Time"
+              onChange={this.onChange}
             />
             <Form.Label>End Time</Form.Label>
             <Form.Control
               name="end_time"
               value={this.end_time}
               placeholder="Enter Ending time"
+              onChange={this.onChange}
             />
             <Form.Label>Reserve</Form.Label>
             <Form.Control
               name="reserve"
               value={this.reserve}
               placeholder="Enter the reserve amount"
+              onChange={this.onChange}
             />
             <Form.Label>Increment</Form.Label>
             <Form.Control
               name="increment"
               value={this.increment}
               placeholder="Enter increment"
+              onChange={this.onChange}
             />
             <Form.Label>Nft Amount</Form.Label>
             <Form.Control
               name="nft_amount"
               value={this.nft_amount}
               placeholder="Enter amount of algos"
+              onChange={this.onChange}
             />
             <Form.Label>Creator</Form.Label>
             <Form.Control
               name="creator"
               value={this.creator}
               placeholder="Enter the creator address"
+              onChange={this.onChange}
             />
           </Form.Group>  
         </Form>
@@ -100,9 +107,9 @@ class AddApplication extends Component {
 }
 
 AddApplication.propTypes = {
-  addNote: PropTypes.func.isRequired
+  generateApp: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(AddApplication));
+export default connect(mapStateToProps, { generateApp })(withRouter(AddApplication));
