@@ -70,6 +70,7 @@ class RequestAsset extends Component {
         <Button variant="success" onClick={this.onAddClick}>
           Request Asset
         </Button>
+        <hr/>
        
       </div>
     );

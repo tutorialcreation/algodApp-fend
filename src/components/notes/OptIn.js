@@ -46,6 +46,7 @@ class OptIn extends Component {
         <Button variant="success" onClick={this.onAddClick}>
           OptIn
         </Button>
+        <hr/>
       </div>
     );
   }
