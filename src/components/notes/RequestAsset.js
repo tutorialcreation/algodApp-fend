@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button, Form} from "react-bootstrap";
-import { addNote } from "./NotesActions";
+import { requestAsset } from "./NotesActions";
 
 class RequestAsset extends Component {
   constructor(props) {
@@ -18,6 +18,11 @@ class RequestAsset extends Component {
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value })
+    const appId = localStorage.getItem("appID")
+    this.setState({appId:appId})
+    console.log({"appID":this.state.appId})
+
   };
 
   onAddClick = () => {
@@ -25,10 +30,12 @@ class RequestAsset extends Component {
     const username = JSON.parse(user).username;
     console.log(username)
     const note = {
-      username: username
+      bidder:this.state.bidder,
+      bidAmount:parseInt(this.state.bidAmount),
+      appId:parseInt(this.state.appId)
     };
     
-    this.props.addNote(note);
+    this.props.requestAsset(note);
     const clientAddress = localStorage.getItem("clientAddress")
     const clientSk = localStorage.getItem("clientSk")
     
@@ -51,19 +58,16 @@ class RequestAsset extends Component {
               name="bidder"
               value={this.bidder}
               placeholder="Enter your address"
+              onChange={this.onChange}
             />
             <Form.Label>Amount</Form.Label>
             <Form.Control
               name="bidAmount"
               value={this.bidAmount}
               placeholder="Enter amount of algos"
+              onChange={this.onChange}
             />
-            <Form.Label>Application Id</Form.Label>
-            <Form.Control
-              name="appId"
-              value={this.appId}
-              placeholder="Enter Application Id"
-            />
+            
           </Form.Group>
 
         </Form>
@@ -78,9 +82,9 @@ class RequestAsset extends Component {
 }
 
 RequestAsset.propTypes = {
-  addNote: PropTypes.func.isRequired
+  requestAsset: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({});
 
-export default connect(mapStateToProps, { addNote })(withRouter(RequestAsset));
+export default connect(mapStateToProps, { requestAsset })(withRouter(RequestAsset));
