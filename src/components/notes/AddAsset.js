@@ -121,7 +121,7 @@ class AddAsset extends Component {
               placeholder="Enter asset name"
               onChange={this.onChange}
             />
-            <Form.Label>Note</Form.Label>
+            <Form.Label>Award</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}

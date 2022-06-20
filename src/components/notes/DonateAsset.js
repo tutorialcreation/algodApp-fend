@@ -88,14 +88,7 @@ class DonateAsset extends Component {
           Donate
         </Button>
         <hr/>
-        { this.state.clientAddress ? (
-          <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
-          </div>
-        ) : (
-          <p>Not yet generated client details</p>
-        )}
+        
       </div>
     );
   }

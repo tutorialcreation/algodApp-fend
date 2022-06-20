@@ -93,11 +93,11 @@ class AddApplication extends Component {
               placeholder="Enter amount of algos to release this nft (in algos)"
               onChange={this.onChange}
             />
-            <Form.Label>Creator</Form.Label>
+            <Form.Label>Admin</Form.Label>
             <Form.Control
               name="creator"
               value={this.creator}
-              placeholder="Enter the creator address"
+              placeholder="Enter the your address"
               onChange={this.onChange}
             />
           </Form.Group>  

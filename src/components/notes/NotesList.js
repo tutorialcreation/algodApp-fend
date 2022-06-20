@@ -15,7 +15,7 @@ class NotesList extends Component {
     const { notes } = this.props.notes;
 
     if (notes.length === 0) {
-      return <h2>Please add your first note</h2>;
+      return <h2>Please add your first certificate</h2>;
     }
 
     let items = notes.map(note => {
