@@ -1,7 +1,5 @@
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "algorand-walletconnect-qrcode-modal";
-import algosdk from "algosdk";
-import { formatJsonRpcRequest } from "@json-rpc-tools/utils";
 import { Button } from "react-bootstrap";
 
 

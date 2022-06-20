@@ -13,7 +13,6 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-import { toast } from "react-toastify";
 
 class Signup extends Component {
   constructor(props) {

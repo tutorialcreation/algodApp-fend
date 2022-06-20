@@ -12,12 +12,10 @@ import AddAsset from "../notes/AddAsset";
 import AddApplication from "../notes/AddApplication";
 import DonateAsset from "../notes/DonateAsset";
 import RequestAsset from "../notes/RequestAsset";
-import OptIn from "../notes/OptIn";
 import AcceptRequest from "../notes/AcceptRequest";
 import GetAssetParams from "../notes/GetAssetParams";
 import GetAssetHoldings from "../notes/GetAssetHoldings";
 import GetBalances from "../notes/GetBalances";
-import WalletConnection from "../account/walletConnect";
 
 class Dashboard extends Component {
   
