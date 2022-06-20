@@ -9,6 +9,7 @@ class GetAssetParams extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      assetParams:"",
       address:"",
       nft_id:0
       
@@ -26,13 +27,9 @@ class GetAssetParams extends Component {
     };
     
     this.props.getAssetParams(note);
-    const clientAddress = localStorage.getItem("clientAddress")
-    const clientSk = localStorage.getItem("clientSk")
+    const assetParams = localStorage.getItem("assetParams")
     
-    this.setState({clientAddress:clientAddress})
-    this.setState({clientSk:clientSk})
-    console.log(this.state.clientAddress)
-    console.log(this.state.clientSk)
+    this.setState({assetParams:assetParams})
 
 
   };
@@ -62,13 +59,12 @@ class GetAssetParams extends Component {
           View Asset Status
         </Button>
         <hr/>
-        { this.state.clientAddress ? (
+        { this.state.assetParams ? (
           <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
+          <p>Asset Parameters: {this.state.assetParams}</p>
           </div>
         ) : (
-          <p>Not yet generated client details</p>
+          <p>Not yet generated asset parameters</p>
         )}
       </div>
     );

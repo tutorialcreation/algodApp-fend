@@ -37,6 +37,7 @@ class Note extends Component {
             <li>trainees:{note.bidders}</li>
             <li>nft_id:{note.nft_id}</li>
             <li>role:{note.role}</li>
+            <li>block:{note.application}</li>
           </ul>
 
         </div>

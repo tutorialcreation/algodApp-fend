@@ -165,9 +165,7 @@ export const getAssetHoldings = note => dispatch => {
         type: ADD_NOTE,
         payload: response.data
       });
-      localStorage.setItem("amount", response.data.amount)
-      localStorage.setItem("asset-id",response.data['asset-id'])
-      localStorage.setItem("is-frozen",response.data['is-frozen'])
+      localStorage.setItem("assetHoldings", JSON.stringify(response.data))
       toast.success("successfully retrieved assetholdings")
     })
     .catch(error => {
@@ -185,9 +183,7 @@ export const getAssetParams = note => dispatch => {
         type: ADD_NOTE,
         payload: response.data
       });
-      localStorage.setItem("amount", response.data.amount)
-      localStorage.setItem("asset-id",response.data['asset-id'])
-      localStorage.setItem("is-frozen",response.data['is-frozen'])
+      localStorage.setItem("assetParams", JSON.stringify(response.data))
       toast.success("successfully retrieved asset status")
     })
     .catch(error => {
@@ -205,7 +201,7 @@ export const getBalance = note => dispatch => {
         type: ADD_NOTE,
         payload: response.data
       });
-      localStorage.setItem("balance", response.data.amount)
+      localStorage.setItem("balance", JSON.stringify(response.data))
       toast.success("successfully retrieved account balance")
     })
     .catch(error => {

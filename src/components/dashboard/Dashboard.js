@@ -52,7 +52,7 @@ class Dashboard extends Component {
             <div>
               <AddNote />
               <AddAsset/>
-              <AddApplication/>
+              <DonateAsset/>
               <AcceptRequest/>
               <GetAssetParams/>
               <GetAssetHoldings/>
@@ -62,6 +62,7 @@ class Dashboard extends Component {
             <div>
               <AddNote />
               <RequestAsset/>
+              <DonateAsset/>
               <GetAssetParams/>
               <GetAssetHoldings/>
               <GetBalances/>
@@ -69,6 +70,7 @@ class Dashboard extends Component {
             :
             <div>
               <AddNote />
+              <AddApplication/>
               <DonateAsset/>
               <GetAssetParams/>
               <GetAssetHoldings/>

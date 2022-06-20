@@ -9,6 +9,7 @@ class GetBalances extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      balance:"",
       address:"",
     };
 
@@ -24,14 +25,10 @@ class GetBalances extends Component {
     };
     
     this.props.getBalance(note);
-    const clientAddress = localStorage.getItem("clientAddress")
-    const clientSk = localStorage.getItem("clientSk")
+    const balance = localStorage.getItem("balance")
     
-    this.setState({clientAddress:clientAddress})
-    this.setState({clientSk:clientSk})
-    console.log(this.state.clientAddress)
-    console.log(this.state.clientSk)
-
+    this.setState({balance:balance})
+    console.log(balance)
 
   };
 
@@ -53,13 +50,12 @@ class GetBalances extends Component {
           View Balance
         </Button>
         <hr/>
-        { this.state.clientAddress ? (
+        { this.state.balance ? (
           <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
+          <p>Balance: {this.state.balance}</p>
           </div>
         ) : (
-          <p>Not yet generated client details</p>
+          <p>Not yet generated balance of this account</p>
         )}
       </div>
     );

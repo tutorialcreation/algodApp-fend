@@ -51,7 +51,13 @@ class AddApplication extends Component {
         <h2>Block</h2>
         <Form>
           <Form.Group controlId="contentId">
-            
+            <Form.Label>NFt</Form.Label>
+            <Form.Control
+              name="nft_id"
+              value={this.nft_id}
+              onChange={this.onChange}
+              placeholder="Enter Non Fungible Token"
+            />
             <Form.Label>Start Time</Form.Label>
             <Form.Control
               name="start_time"
@@ -80,11 +86,11 @@ class AddApplication extends Component {
               placeholder="Enter increment"
               onChange={this.onChange}
             />
-            <Form.Label>Nft Amount</Form.Label>
+            <Form.Label>Amount</Form.Label>
             <Form.Control
               name="nft_amount"
               value={this.nft_amount}
-              placeholder="Enter amount of algos"
+              placeholder="Enter amount of algos to release this nft (in algos)"
               onChange={this.onChange}
             />
             <Form.Label>Creator</Form.Label>

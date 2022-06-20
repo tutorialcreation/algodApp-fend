@@ -9,6 +9,7 @@ class GetAssetHoldings extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      assetHoldings:"",
       address:"",
       nft_id:0
       
@@ -26,13 +27,9 @@ class GetAssetHoldings extends Component {
     };
     
     this.props.getAssetHoldings(note);
-    const clientAddress = localStorage.getItem("clientAddress")
-    const clientSk = localStorage.getItem("clientSk")
+    const assetHoldings = localStorage.getItem("assetHoldings")
     
-    this.setState({clientAddress:clientAddress})
-    this.setState({clientSk:clientSk})
-    console.log(this.state.clientAddress)
-    console.log(this.state.clientSk)
+    this.setState({assetHoldings:assetHoldings})
 
 
   };
@@ -63,13 +60,12 @@ class GetAssetHoldings extends Component {
           View Asset Holdings
         </Button>
         <hr/>
-        { this.state.clientAddress ? (
+        { this.state.assetHoldings ? (
           <div>
-          <p>Address: {this.state.clientAddress}</p>
-          <p>Key: {this.state.clientSk}</p>
+          <p>Asset Holdings {this.state.assetHoldings}</p>
           </div>
         ) : (
-          <p>Not yet generated client details</p>
+          <p>Asset Holdings not yet generated</p>
         )}
       </div>
     );
