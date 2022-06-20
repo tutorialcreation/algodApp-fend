@@ -109,6 +109,7 @@ export const requestAsset = note => dispatch => {
         payload: response.data
       });
       localStorage.setItem("bidder_address",response.data.bidder_address)
+      localStorage.setItem("asset_url",response.data.asset_url)
       toast.success("successfully requested for asset")
     })
     .catch(error => {

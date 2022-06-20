@@ -9,6 +9,7 @@ class RequestAsset extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      asset_url:"",
       bidder:"",
       bidAmount:0,
       appId:0,
@@ -34,13 +35,10 @@ class RequestAsset extends Component {
     };
     
     this.props.requestAsset(note);
-    const clientAddress = localStorage.getItem("clientAddress")
-    const clientSk = localStorage.getItem("clientSk")
+    const asset_url = localStorage.getItem("asset_url")
     
-    this.setState({clientAddress:clientAddress})
-    this.setState({clientSk:clientSk})
-    console.log(this.state.clientAddress)
-    console.log(this.state.clientSk)
+    this.setState({asset_url:asset_url})
+    console.log(this.state.asset_url)
 
 
   };
@@ -87,7 +85,13 @@ class RequestAsset extends Component {
           Mint
         </Button>
         <hr/>
-       
+        { this.state.asset_url ? (
+          <div>
+          <p>Certificate: <a href={this.state.asset_url} target="_blank">{this.state.asset_url}</a></p>
+          </div>
+        ) : (
+          <p>Certificate not yet generated</p>
+        )}
       </div>
     );
   }

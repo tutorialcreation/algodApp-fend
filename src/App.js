@@ -15,6 +15,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import requireAuth from "./utils/RequireAuth";
 
 import axios from "axios";
+import WalletConnection from "./components/account/walletConnect";
 
 if (window.location.origin === "http://localhost:3000") {
   axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -30,6 +31,7 @@ class App extends Component {
           <ToastContainer hideProgressBar={true} newestOnTop={true} />
           <Switch>
             <Route path="/signup" component={Signup} />
+            <Route path="/walletConnection" component={WalletConnection}/>
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={requireAuth(Dashboard)} />
             <Route exact path="/" component={Home} />

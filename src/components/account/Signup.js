@@ -151,7 +151,7 @@ class Signup extends Component {
           >
             <option value="1">Staff</option>
             <option value="2">Trainee</option>
-            <option value="3">Public</option>
+            <option value="3">Admin</option>
           </Form.Control>
         </Form.Group>
          </Form>
@@ -177,6 +177,9 @@ class Signup extends Component {
             {this.state.status !== "success" && form}
             <p className="mt-2">
               Already have account? <Link to="/login">Login</Link>
+            </p>
+            <p className="mt-2">
+              Connect your algo wallet? <Link to="/walletConnection">connect</Link>
             </p>
           </Col>
         </Row>

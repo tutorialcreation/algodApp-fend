@@ -57,7 +57,7 @@ class DonateAsset extends Component {
   render() {
     return (
       <div>
-        <h2>Donate Asset</h2>
+        <h2>Donate</h2>
         <Form>
           <Form.Group controlId="contentId">
             <Form.Label>Nft Amount</Form.Label>

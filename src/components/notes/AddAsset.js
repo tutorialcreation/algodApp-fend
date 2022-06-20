@@ -83,7 +83,7 @@ class AddAsset extends Component {
   onAddClick = () => {
     
     const note = {
-      asset_url:this.state.asset_url,
+      url:this.state.asset_url,
       nft_pk:this.state.nft_pk,
       nft_amount:this.state.nft_amount,
       unit_name:this.state.unit_name,

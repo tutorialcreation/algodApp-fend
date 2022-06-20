@@ -24,7 +24,7 @@ class NotesList extends Component {
 
     return (
       <div>
-        <h2>Notes</h2>
+        <h2>Ready Certificates</h2>
         {items}
         <hr /> {/* a */}
       </div>

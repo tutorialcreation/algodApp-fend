@@ -49,6 +49,7 @@ export const getCurrentUser = redirectTo => dispatch => {
 
 export const setCurrentUser = (user, redirectTo) => dispatch => {
   localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("role",user.role)
   dispatch({
     type: SET_CURRENT_USER,
     payload: user
@@ -62,6 +63,7 @@ export const setCurrentUser = (user, redirectTo) => dispatch => {
 export const setToken = token => dispatch => {
   setAxiosAuthToken(token);
   localStorage.setItem("token", token);
+
   dispatch({
     type: SET_TOKEN,
     payload: token
@@ -87,7 +89,7 @@ export const logout = () => dispatch => {
     })
     .catch(error => {
       dispatch(unsetCurrentUser());
-      toastOnError(error);
+      // toastOnError(error);
     });
 };
 
