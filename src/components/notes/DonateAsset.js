@@ -21,13 +21,7 @@ class DonateAsset extends Component {
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
     console.log({ [e.target.name]: e.target.value })
-    const nftId = localStorage.getItem("nft_id")
-    this.setState({nft_id:nftId})
-    console.log({"nft_id":this.state.nft_id})
-    const appId = localStorage.getItem("appID")
-    this.setState({app_id:appId})
-    console.log({"appID":this.state.app_id})
-
+    
   };
 
   onAddClick = () => {
@@ -60,7 +54,21 @@ class DonateAsset extends Component {
         <h2>Donate</h2>
         <Form>
           <Form.Group controlId="contentId">
-            <Form.Label>Nft Amount</Form.Label>
+          <Form.Label>Nft</Form.Label>
+            <Form.Control
+              name="nft_id"
+              value={this.nft_id}
+              placeholder="Enter the non fungible token"
+              onChange={this.onChange}
+            />
+            <Form.Label>Block</Form.Label>
+            <Form.Control
+              name="app_id"
+              value={this.app_id}
+              placeholder="Enter the block identification"
+              onChange={this.onChange}
+            />
+            <Form.Label>Amount</Form.Label>
             <Form.Control
               name="nft_amount"
               value={this.nft_amount}

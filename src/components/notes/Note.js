@@ -52,6 +52,15 @@ class Note extends Component {
           <ul>
             <li>unit_name:{note.unit_name}</li>
             <li>asset_name:{note.asset_name}</li>
+            {(note.is_bidded)?
+            <div>
+            <li>certificate:<a href={note.asset_url} target="_blank">
+              {note.asset_url}</a></li>
+              <li>trainees:{note.bidders}</li>
+              </div>
+              :
+              <li>certificate:No certificate for you</li>
+            }
             <li>award:{note.note}</li>
             <li>nft_id:{note.nft_id}</li>
             <li>role:{note.role}</li>

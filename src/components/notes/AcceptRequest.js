@@ -21,10 +21,6 @@ class AcceptRequest extends Component {
   };
 
   onAddClick = () => {
-    
-    const appId = localStorage.getItem("appID")
-    this.setState({app_id:appId})
-    console.log({"appID":this.state.app_id})
     const note = {
       app_id:parseInt(this.state.app_id),
       nft_id:parseInt(this.state.nft_id)
@@ -47,14 +43,22 @@ class AcceptRequest extends Component {
       <div>
         <Form>
           <Form.Group>
-            <Form.Label>Accept</Form.Label>
+            <Form.Label>NFt</Form.Label>
             <Form.Control
               name="nft_id"
               value={this.nft_id}
               onChange={this.onChange}
               placeholder="Enter NFT to accept"
             />
+            <Form.Label>Block</Form.Label>
+            <Form.Control
+              name="app_id"
+              value={this.app_id}
+              onChange={this.onChange}
+              placeholder="Enter block to accept"
+            />
           </Form.Group>
+          
         </Form>
         <Button variant="success" onClick={this.onAddClick}>
           Accept Request

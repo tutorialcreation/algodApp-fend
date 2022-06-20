@@ -144,7 +144,7 @@ class AddAsset extends Component {
           </Form.Group>
         </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Generate Nft
+          Mint
         </Button>
         <hr></hr>
       </div>

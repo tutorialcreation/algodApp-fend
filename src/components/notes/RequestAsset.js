@@ -46,7 +46,7 @@ class RequestAsset extends Component {
   render() {
     return (
       <div>
-        <h2>Mint Nft</h2>
+        <h2>Request</h2>
         <Form>
           <Form.Group controlId="contentId">
             <Form.Label>Address</Form.Label>
@@ -82,7 +82,7 @@ class RequestAsset extends Component {
 
         </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Mint
+          Request
         </Button>
         <hr/>
         { this.state.asset_url ? (
