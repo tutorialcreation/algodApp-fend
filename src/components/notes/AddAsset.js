@@ -77,13 +77,7 @@ class AddAsset extends Component {
     });
     const nftPk = localStorage.getItem("nftPk")
     this.setState({nft_pk:nftPk})
-    console.log(this.state.nft_pk)
-    console.log(this.state.nft_amount)
-    console.log(this.state.asset_url)
-    console.log(this.state.nft_amount)
-    console.log(this.state.unit_name)
-    console.log(this.state.asset_name)
-    console.log(this.state.note)
+    console.log({[e.target.name]: e.target.value})
   };
 
   onAddClick = () => {

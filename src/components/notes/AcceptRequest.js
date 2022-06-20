@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button} from "react-bootstrap";
+import { Button, Form} from "react-bootstrap";
 import { acceptRequest } from "./NotesActions";
 
 class AcceptRequest extends Component {
@@ -17,15 +17,11 @@ class AcceptRequest extends Component {
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log({ [e.target.name]: e.target.value })
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("user")
-    const username = JSON.parse(user).username;
-    console.log(username)
-    const nftId = localStorage.getItem("nftId")
-    this.setState({nft_id:nftId})
-    console.log({"nftId":this.state.nft_id})
+    
     const appId = localStorage.getItem("appID")
     this.setState({app_id:appId})
     console.log({"appID":this.state.app_id})
@@ -49,7 +45,17 @@ class AcceptRequest extends Component {
   render() {
     return (
       <div>
-        
+        <Form>
+          <Form.Group>
+            <Form.Label>Accept</Form.Label>
+            <Form.Control
+              name="nft_id"
+              value={this.nft_id}
+              onChange={this.onChange}
+              placeholder="Enter NFT to accept"
+            />
+          </Form.Group>
+        </Form>
         <Button variant="success" onClick={this.onAddClick}>
           Accept Request
         </Button>

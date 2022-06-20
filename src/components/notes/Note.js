@@ -27,15 +27,20 @@ class Note extends Component {
     return (
       <div>
         <hr />
-        <p>
-          (id:{note.id}) {note.content}
-        </p>
-        <Button variant="secondary" size="sm" onClick={this.onUpperCaseClick}>
-          Upper case
-        </Button>{" "}
-        <Button variant="info" size="sm" onClick={this.onLowerCaseClick}>
-          Lower case
-        </Button>{" "}
+        <div>
+          (Staff:{note.user}) {note.address}
+          <ul>
+            <li>unit_name:{note.unit_name}</li>
+            <li>asset_name:{note.asset_name}</li>
+            <li>asset_url:{note.asset_url}</li>
+            <li>note:{note.note}</li>
+            <li>trainees:{note.bidders}</li>
+            <li>nft_id:{note.nft_id}</li>
+            <li>role:{note.role}</li>
+          </ul>
+
+        </div>
+
         <Button variant="danger" size="sm" onClick={this.onDeleteClick}>
           Delete
         </Button>
