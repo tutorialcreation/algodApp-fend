@@ -52,6 +52,7 @@ class Dashboard extends Component {
             <div>
               <AddNote />
               <AddAsset/>
+              <AddApplication/>
               <AcceptRequest/>
               <GetAssetParams/>
               <GetAssetHoldings/>
@@ -59,16 +60,16 @@ class Dashboard extends Component {
             </div>
             :(user.role === 2)?
             <div>
+              <AddNote />
               <RequestAsset/>
-              <OptIn/>
               <GetAssetParams/>
               <GetAssetHoldings/>
               <GetBalances/>
             </div>
             :
             <div>
+              <AddNote />
               <DonateAsset/>
-              <AddApplication/>
               <GetAssetParams/>
               <GetAssetHoldings/>
               <GetBalances/>

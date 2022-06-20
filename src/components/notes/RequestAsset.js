@@ -11,7 +11,8 @@ class RequestAsset extends Component {
     this.state = {
       bidder:"",
       bidAmount:0,
-      appId:0
+      appId:0,
+      nft_id:0
       
     };
 
@@ -19,10 +20,6 @@ class RequestAsset extends Component {
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
     console.log({ [e.target.name]: e.target.value })
-    const appId = localStorage.getItem("appID")
-    this.setState({appId:appId})
-    console.log({"appID":this.state.appId})
-
   };
 
   onAddClick = () => {
@@ -32,7 +29,8 @@ class RequestAsset extends Component {
     const note = {
       bidder:this.state.bidder,
       bidAmount:parseInt(this.state.bidAmount),
-      appId:parseInt(this.state.appId)
+      appId:parseInt(this.state.appId),
+      nft_id:parseInt(this.state.nft_id)
     };
     
     this.props.requestAsset(note);
@@ -50,7 +48,7 @@ class RequestAsset extends Component {
   render() {
     return (
       <div>
-        <h2>Request Asset</h2>
+        <h2>Mint Nft</h2>
         <Form>
           <Form.Group controlId="contentId">
             <Form.Label>Address</Form.Label>
@@ -67,12 +65,26 @@ class RequestAsset extends Component {
               placeholder="Enter amount of algos"
               onChange={this.onChange}
             />
+            <Form.Label>Block</Form.Label>
+            <Form.Control
+              name="appId"
+              value={this.appId}
+              placeholder="Enter the block"
+              onChange={this.onChange}
+            />
+            <Form.Label>NFT</Form.Label>
+            <Form.Control
+              name="nft_id"
+              value={this.nft_id}
+              placeholder="Enter the Non Fungible Token"
+              onChange={this.onChange}
+            />
             
           </Form.Group>
 
         </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Request Asset
+          Mint
         </Button>
         <hr/>
        

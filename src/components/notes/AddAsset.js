@@ -100,11 +100,11 @@ class AddAsset extends Component {
         <Form>
           <Form.Group controlId="contentId">
             
-            <Form.Label>Nft amount</Form.Label>
+            <Form.Label>Amount</Form.Label>
             <Form.Control
               name="nft_amount"
               value={this.nft_amount}
-              placeholder="Enter nft amount"
+              placeholder="Enter amount of algos needed to release this asset (in algos)"
               onChange={this.onChange}
             />
             <Form.Label>Unit Name</Form.Label>

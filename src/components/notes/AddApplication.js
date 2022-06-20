@@ -48,7 +48,7 @@ class AddApplication extends Component {
   render() {
     return (
       <div>
-        <h2>Create Application</h2>
+        <h2>Block</h2>
         <Form>
           <Form.Group controlId="contentId">
             
@@ -97,9 +97,9 @@ class AddApplication extends Component {
           </Form.Group>  
         </Form>
         <Button variant="success" onClick={this.onAddClick}>
-          Create Application
+          Setup block
         </Button>
-
+        <hr/>
         
       </div>
     );

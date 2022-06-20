@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button} from "react-bootstrap";
+import { Form,Button} from "react-bootstrap";
 import { getBalance } from "./NotesActions";
 
 class GetBalances extends Component {
@@ -18,8 +18,6 @@ class GetBalances extends Component {
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("address")
-    this.setState({address:user})
     
     const note = {
       address: this.state.address
@@ -40,7 +38,17 @@ class GetBalances extends Component {
   render() {
     return (
       <div>
-        
+        <Form>
+          <Form.Group controlId="contentId">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              name="address"
+              value={this.address}
+              placeholder="Enter address of nft holder"
+              onChange={this.onChange}
+            />
+          </Form.Group> 
+        </Form>
         <Button variant="success" onClick={this.onAddClick}>
           View Balance
         </Button>

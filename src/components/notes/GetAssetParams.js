@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Button} from "react-bootstrap";
+import { Form,Button} from "react-bootstrap";
 import { getAssetParams } from "./NotesActions";
 
 class GetAssetParams extends Component {
@@ -20,13 +20,9 @@ class GetAssetParams extends Component {
   };
 
   onAddClick = () => {
-    const user = localStorage.getItem("clientAddress")
-    this.setState({address:user})
-    const nftId = localStorage.getItem("nftId")
-    this.setState({nft_id:nftId})
     const note = {
       address:this.state.address,
-      nft_id:this.state.nft_id
+      nft_id:parseInt(this.state.nft_id)
     };
     
     this.props.getAssetParams(note);
@@ -44,7 +40,24 @@ class GetAssetParams extends Component {
   render() {
     return (
       <div>
-        
+        <Form>
+          <Form.Group controlId="contentId">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              name="address"
+              value={this.address}
+              placeholder="Enter address of nft holder"
+              onChange={this.onChange}
+            />
+            <Form.Label>NFT</Form.Label>
+            <Form.Control
+              name="nft_id"
+              value={this.nft_id}
+              placeholder="Enter the Non Fungible Token"
+              onChange={this.onChange}
+            />
+          </Form.Group>  
+        </Form>
         <Button variant="success" onClick={this.onAddClick}>
           View Asset Status
         </Button>
