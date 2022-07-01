@@ -11,7 +11,8 @@ class AddAsset extends Component {
     super(props);
     this.state = {
       asset_url:"",
-      nft_pk:0,
+      address:"",
+      mnemonic:"",
       nft_amount:0,
       unit_name:"",
       asset_name:"",
@@ -84,8 +85,10 @@ class AddAsset extends Component {
     
     const note = {
       url:this.state.asset_url,
+      address:this.state.address,
+      mnemonic:this.state.mnemonic,
       nft_pk:this.state.nft_pk,
-      nft_amount:this.state.nft_amount,
+      nft_amount:parseFloat(this.state.nft_amount),
       unit_name:this.state.unit_name,
       asset_name:this.state.asset_name,
       note:this.state.note
@@ -96,10 +99,24 @@ class AddAsset extends Component {
   render() {
     return (
       <div>
-        <h2>Generate NFt</h2>
+        <h2>Mint NFt</h2>
         <Form>
           <Form.Group controlId="contentId">
-            
+          <Form.Label>Address</Form.Label>
+            <Form.Control
+              name="address"
+              value={this.address}
+              placeholder="Enter your address"
+              onChange={this.onChange}
+            />
+            <Form.Label>Mnemonic Phrase</Form.Label>
+            <Form.Control
+              name="mnemonic"
+              type="password"
+              value={this.mnemonic}
+              placeholder="Enter your mnemonic phrase"
+              onChange={this.onChange}
+            />
             <Form.Label>Amount</Form.Label>
             <Form.Control
               name="nft_amount"

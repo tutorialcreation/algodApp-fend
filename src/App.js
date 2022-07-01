@@ -16,9 +16,11 @@ import requireAuth from "./utils/RequireAuth";
 
 import axios from "axios";
 import WalletConnection from "./components/account/walletConnect";
+import AddAsset from "./components/notes/AddAsset";
+import DonateAsset from "./components/notes/DonateAsset";
 
 if (window.location.origin === "http://localhost:3000") {
-  axios.defaults.baseURL = " https://certifiedapps.herokuapp.com ";
+  axios.defaults.baseURL = "http://127.0.0.1:8000";
 } else {
   axios.defaults.baseURL = window.location.origin;
 }
@@ -35,6 +37,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={requireAuth(Dashboard)} />
             <Route exact path="/" component={Home} />
+            <Route path="/addAsset" component={AddAsset} />
+            <Route path="/donateAsset" component={DonateAsset} />
             <Route path="/resend_activation" component={ResendActivation} />
             <Route path="/activate/:uid/:token" component={ActivateAccount} />
             <Route path="/send_reset_password/" component={ResetPassword} />

@@ -168,7 +168,7 @@ class Signup extends Component {
     }
 
     return (
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col md="6">
             <h1>Sign up</h1>
@@ -178,7 +178,7 @@ class Signup extends Component {
               Already have account? <Link to="/login">Login</Link>
             </p>
             <p className="mt-2">
-              Connect your algo wallet? <Link to="/walletConnection">connect</Link>
+              Connect your algo wallet? <a href="http://localhost:5000/algorand-wallet-walletconnect-redux">connect</a>
             </p>
           </Col>
         </Row>

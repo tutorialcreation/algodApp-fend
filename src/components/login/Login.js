@@ -28,7 +28,7 @@ class Login extends Component {
   };
   render() {
     return (
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col md="4">
             <h1>Login</h1>
@@ -64,6 +64,9 @@ class Login extends Component {
             <p className="mt-2">
               Forget password?{" "}
               <Link to="/send_reset_password">Reset Password</Link>
+            </p>
+            <p className="mt-2">
+              Connect your algo wallet? <a href="http://localhost:5000/algorand-wallet-walletconnect-redux">connect</a>
             </p>
           </Col>
         </Row>

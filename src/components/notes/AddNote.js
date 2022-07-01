@@ -43,7 +43,7 @@ class AddNote extends Component {
   render() {
     return (
       <div>
-        <h2>Generate Details</h2>
+        <h2>Get My Details</h2>
         
         <Button variant="success" onClick={this.onAddClick}>
           Generate
